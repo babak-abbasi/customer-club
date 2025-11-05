@@ -1,0 +1,15 @@
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\bin\Debug\net9.0\Service.Write.deps.json
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\bin\Debug\net9.0\Service.Write.dll
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\bin\Debug\net9.0\Service.Write.pdb
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.AssemblyInfoInputs.cache
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.AssemblyInfo.cs
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.csproj.CoreCompileInputs.cache
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.dll
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\refint\Service.Write.dll
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.pdb
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\ref\Service.Write.dll
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service.Write.csproj.AssemblyReference.cache
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\obj\Debug\net9.0\Service..826B5F84.Up2Date
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\bin\Debug\net9.0\Repository.Write.dll
+D:\Programming contents\Projects\Dotnet Core\customer-club\src\service\Service.Write\bin\Debug\net9.0\Repository.Write.pdb

@@ -1,0 +1,60 @@
+# Visual Studio folder
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Ll]og/
+
+# Publish output
+out/
+publish/
+
+# .NET artifacts
+*.dll
+*.exe
+*.appx
+*.pdb
+*.cache
+*.log
+*.dbmdl
+
+# VS Code settings
+.vscode/
+
+# Rider / JetBrains IDE
+.idea/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Auto-generated files
+*.Generated.*
+*.g.*
+*.i.*
+
+# Coverage and test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# OS-specific files
+[Tt]humbs.db
+[Dd]esktop.ini
+*.DS_Store

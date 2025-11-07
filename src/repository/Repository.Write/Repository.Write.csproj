@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Elastic.Clients.ElasticSearch" Version="9.2.1" />
+    <ProjectReference Include="./../../domain/Domain.Write/Domain.Write.csproj" />
+  </ItemGroup>
+
 </Project>

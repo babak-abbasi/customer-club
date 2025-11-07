@@ -1,4 +1,4 @@
-@Host.Write_HostAddress = https://localhost:7012
+@Host.Write_HostAddress = http://localhost:5071
 
 Post {{Host.Write_HostAddress}}/api/v1/country
 Accept: application/json

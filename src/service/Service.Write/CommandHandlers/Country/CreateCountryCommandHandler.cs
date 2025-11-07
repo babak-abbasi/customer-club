@@ -5,9 +5,9 @@ using Repository.Write;
 
 namespace Service.CommandHandlers.Country;
 
-public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand, Result<int>>
+public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand, Result<string>>
 {
-    public async Task<Result<int>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
     {
         Repository.Write.CountryRepository repo = new();
         var result = await repo.AddCountryAsync(request.Name, request.Code);

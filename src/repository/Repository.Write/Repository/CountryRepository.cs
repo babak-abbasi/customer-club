@@ -1,10 +1,11 @@
 ﻿using Elastic.Clients.Elasticsearch;
 using Elastic.Transport;
 using Domain.Entities.Write;
+using Domain.Repository;
 
 namespace Repository.Write;
 
-public class CountryRepository
+public class CountryRepository : ICountryRepository
 {
     private readonly ElasticsearchClient? client;
 
@@ -36,9 +37,6 @@ public class CountryRepository
                 Code = code,
                 Name = name
             };
-
-            Console.WriteLine(country.CreatedDate);
-            Console.WriteLine(country.ModifiedDate);
 
             var response = await client.IndexAsync(country, x => x.Index("country"));
 

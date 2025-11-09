@@ -3,6 +3,7 @@ using Repository.Write;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<Options>(builder.Configuration);
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.CommandHandlers.Country.CreateCountryCommandHandler>());

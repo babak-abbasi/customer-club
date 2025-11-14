@@ -1,0 +1,8 @@
+@Host.Read_HostAddress = http://localhost:5225
+
+###
+
+GET {{Host.Read_HostAddress}}/api/v1/countryread?id=sUjxaZoB5hJq02Pcg1SF
+Accept-Language: en-US,en;q=0.5
+
+###

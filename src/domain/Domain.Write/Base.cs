@@ -23,4 +23,6 @@ public class Base
 		set => _modifiedDate = value;
 		get => _modifiedDate = DateTime.UtcNow;
 	}
+
+	public decimal Order { get; set; }
 }

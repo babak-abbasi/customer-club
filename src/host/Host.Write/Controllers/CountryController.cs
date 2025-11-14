@@ -2,22 +2,21 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Service.Commands.Country;
 
-namespace Host.Write.Controllers
+namespace Host.Write.Controllers;
+
+[ApiController]
+[Route("api/v1/[controller]")]
+public class CountryController(IMediator _mediator) : ControllerBase
 {
-    [ApiController]
-    [Route("api/v1/[controller]")]
-    public class CountryController(IMediator _mediator) : ControllerBase
+    // POST api/v1/country
+    [HttpPost]
+    public async Task<IActionResult> PostCountry([FromBody] CreateCountryCommand command, CancellationToken cancellationToken)
     {
-        // POST api/v1/country
-        [HttpPost]
-        public async Task<IActionResult> PostCountry([FromBody] CreateCountryCommand command, CancellationToken cancellationToken)
-        {
-            var result = await _mediator.Send(command, cancellationToken);
+        var result = await _mediator.Send(command, cancellationToken);
 
-            if(result.IsFailed)
-                return BadRequest(result.Errors);
+        if(result.IsFailed)
+            return BadRequest(result.Errors);
 
-            return Ok(result.Value);
-        }
+        return Ok(result.Value);
     }
 }

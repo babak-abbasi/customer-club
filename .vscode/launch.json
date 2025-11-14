@@ -1,15 +1,49 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:7012",
-            "webRoot": "${workspaceFolder}"
+      {
+        "name": "Host.Write",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/src/host/Host.Write/bin/Debug/net9.0/Host.Write.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/src/host/Host.Write",
+        "stopAtEntry": false,
+        "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+        },
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
         }
+      },
+      {
+        "name": "Host.Read",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/src/host/Host.Read/bin/Debug/net9.0/Host.Read.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/src/host/Host.Read",
+        "stopAtEntry": false,
+        "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+        },
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Run Both APIs",
+        "configurations": [
+          // "Host.Write",
+          "Host.Read"
+        ]
+      }
     ]
-}
+  }
+  

@@ -10,20 +10,9 @@ public class CountryRepository : ICountryRepository
 {
     private readonly ElasticsearchClient? client;
 
-    public CountryRepository(IOptions<Options> options)
+    public CountryRepository(IOptions<Options> options, ElasticsearchClient client)
     {
-        try
-        {
-            var settings = new ElasticsearchClientSettings(new Uri(options.Value.ElasticSearch.Url))
-                .CertificateFingerprint(options.Value.ElasticSearch.FingerPrint)
-                .Authentication(new BasicAuthentication(options.Value.ElasticSearch.UserName, options.Value.ElasticSearch.Password));
-
-            client = new ElasticsearchClient(settings);
-        }
-        catch(Exception exception)
-        {
-            throw new Exception($"ElasticSearch connection failure: {exception.Message}");
-        }
+        this.client = client;
     }
 
     public async Task<string> AddCountryAsync(string name, string code)

@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+    <PackageReference Include="Elastic.Clients.ElasticSearch" Version="9.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
+
     <ProjectReference Include="./../../service/Service.Write/Service.Write.csproj" />
     <ProjectReference Include="./../../repository/Repository.Write/Repository.Write.csproj" />
   </ItemGroup>

@@ -11,7 +11,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.CommandHandlers.Country.CreateCountryCommandHandler>());
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
-builder.Services.AddScoped<ElasticsearchClient>(config => {
+builder.Services.AddSingleton<ElasticsearchClient>(config => {
 
     var options = config.GetRequiredService<IOptions<Repository.Write.Options>>();
 

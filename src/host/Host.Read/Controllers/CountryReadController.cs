@@ -6,15 +6,27 @@ namespace Host.Read;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class CountryReadController(IMediator _mediator) : ControllerBase
+public class CountryController(IMediator _mediator) : ControllerBase
 {
     // POST api/v1/country
-    [HttpGet]
-    public async Task<IActionResult> GetCountry([FromQuery] GetByIdCountryQuery query, CancellationToken cancellationToken)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetByIdAsync([FromQuery] GetByIdQuery query, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(query, cancellationToken);
 
         if(result.IsFailed)
+            return BadRequest(result.Errors);
+
+        return Ok(result.Value);
+    }
+
+    // POST api/v1/countries
+    [HttpGet("countries")]
+    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetAllQuery(), cancellationToken);
+
+        if (result.IsFailed)
             return BadRequest(result.Errors);
 
         return Ok(result.Value);

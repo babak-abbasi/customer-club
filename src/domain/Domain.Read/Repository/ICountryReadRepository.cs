@@ -2,7 +2,6 @@ using Domain.Entities.Read;
 
 namespace Domain.Read.Repository;
 
-public interface ICountryReadRepository
+public interface ICountryReadRepository : IBaseRepository
 {
-    Task<Country?> GetCountryByIdAsync(string id);
 }

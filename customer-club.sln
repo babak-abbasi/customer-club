@@ -7,33 +7,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DC1FE4D5-431
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{26C7E933-4571-403A-B470-DBC0160F245C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Write", "src\domain\Domain.Write\Domain.Write.csproj", "{23688981-8217-4BEF-9BFA-C8957352430F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Write", "src\domain\Domain.Write\Domain.Write.csproj", "{23688981-8217-4BEF-9BFA-C8957352430F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "service", "service", "{7792FC3A-F274-4AF6-ADDE-134DCD677C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Write", "src\service\Service.Write\Service.Write.csproj", "{3C1C2912-D2B7-4665-8E93-86BB6E8CF672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Write", "src\service\Service.Write\Service.Write.csproj", "{3C1C2912-D2B7-4665-8E93-86BB6E8CF672}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repository", "repository", "{28B11B41-4F0F-4D63-BBAA-EFFA8BB32C08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Write", "src\repository\Repository.Write\Repository.Write.csproj", "{7700CD58-4D2B-4529-B041-19A788949140}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Write", "src\repository\Repository.Write\Repository.Write.csproj", "{7700CD58-4D2B-4529-B041-19A788949140}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{A937A1AB-4AA4-4B19-A3C0-ADAB2ADA3156}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Write", "src\host\Host.Write\Host.Write.csproj", "{4E413835-9A76-4126-BA45-A73C1295B169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Write", "src\host\Host.Write\Host.Write.csproj", "{4E413835-9A76-4126-BA45-A73C1295B169}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Read", "src\host\Host.Read\Host.Read.csproj", "{42F8575C-B60C-4060-A401-4E56543C2304}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Read", "src\host\Host.Read\Host.Read.csproj", "{42F8575C-B60C-4060-A401-4E56543C2304}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Read", "src\domain\Domain.Read\Domain.Read.csproj", "{D8BC4EF1-322B-406F-8ED0-BA6408E24FFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Read", "src\domain\Domain.Read\Domain.Read.csproj", "{D8BC4EF1-322B-406F-8ED0-BA6408E24FFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Read", "src\service\Service.Read\Service.Read.csproj", "{B9B3E827-7F21-49FF-8FC9-0011A9DBAFCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Read", "src\service\Service.Read\Service.Read.csproj", "{B9B3E827-7F21-49FF-8FC9-0011A9DBAFCD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Read", "src\repository\Repository.Read\Repository.Read.csproj", "{A0704F57-4448-4617-A934-00FC10A220DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{23688981-8217-4BEF-9BFA-C8957352430F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -64,6 +63,13 @@ Global
 		{B9B3E827-7F21-49FF-8FC9-0011A9DBAFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9B3E827-7F21-49FF-8FC9-0011A9DBAFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9B3E827-7F21-49FF-8FC9-0011A9DBAFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0704F57-4448-4617-A934-00FC10A220DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0704F57-4448-4617-A934-00FC10A220DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0704F57-4448-4617-A934-00FC10A220DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0704F57-4448-4617-A934-00FC10A220DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26C7E933-4571-403A-B470-DBC0160F245C} = {DC1FE4D5-4318-45F6-A4C3-4DA53DF6EEB6}
@@ -77,5 +83,6 @@ Global
 		{42F8575C-B60C-4060-A401-4E56543C2304} = {A937A1AB-4AA4-4B19-A3C0-ADAB2ADA3156}
 		{D8BC4EF1-322B-406F-8ED0-BA6408E24FFD} = {26C7E933-4571-403A-B470-DBC0160F245C}
 		{B9B3E827-7F21-49FF-8FC9-0011A9DBAFCD} = {7792FC3A-F274-4AF6-ADDE-134DCD677C4F}
+		{A0704F57-4448-4617-A934-00FC10A220DC} = {28B11B41-4F0F-4D63-BBAA-EFFA8BB32C08}
 	EndGlobalSection
 EndGlobal

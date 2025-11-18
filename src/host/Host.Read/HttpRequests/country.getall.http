@@ -2,7 +2,7 @@
 
 ###
 
-GET {{Host.Read_HostAddress}}/api/v1/country/country?id=sUjxaZoB5hJq02Pcg1SF
+GET {{Host.Read_HostAddress}}/api/v1/country/countries
 Accept-Language: en-US,en;q=0.5
 
 ###

@@ -9,9 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<Repository.Read.Options>(builder.Configuration);
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.QueryHandlers.Country.GetByIdCountryQueryHandler>());
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.QueryHandlers.Country.GetByIdQueryHandler>());
 builder.Services.AddScoped<ICountryReadRepository, CountryReadRepository>();
-builder.Services.AddScoped<ElasticsearchClient>(config => {
+builder.Services.AddSingleton<ElasticsearchClient>(config => {
 
     var options = config.GetRequiredService<IOptions<Repository.Read.Options>>();
 

@@ -1,8 +1,6 @@
-﻿using Domain.Write;
+﻿namespace Domain.Write.Entities;
 
-namespace Domain.Entities.Write;
-
-public class Country : Base
+public class Country(string code, string name, decimal order) : Base(code, name, order)
 {
-    
+
 }

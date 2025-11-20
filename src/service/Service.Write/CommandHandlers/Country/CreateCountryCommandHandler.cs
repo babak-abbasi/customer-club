@@ -14,7 +14,7 @@ public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand,
     }
     public async Task<Result<string>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
     {
-        var result = await repo.AddCountryAsync(request.Name, request.Code);
+        var result = await repo.AddCountryAsync(request.Name, request.Code, request.Order);
 
         return Result.Ok(result);
     }

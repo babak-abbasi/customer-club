@@ -20,7 +20,7 @@ public class GetAllQueryHandler : IRequestHandler<GetAllQuery, Result<List<Count
         var result = await repo.GetAllAsync<Domain.Entities.Read.Country>();
         var countryDto =
                     result
-                    .Select(country => new CountryDto(country.Id, country.Code, country.Name, country.CreatedDate, country.ModifiedDate, country.Order))
+                    .Select(country => new CountryDto(country.Id, country.Code, country.Name, country.CreatedDate, country.UpdatedDate, country.Order))
                     .ToList();
 
         return Result.Ok(countryDto);

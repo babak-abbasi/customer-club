@@ -16,7 +16,7 @@ public class GetByIdQueryHandler: IRequestHandler<GetByIdQuery, Result<CountryDt
     public async Task<Result<CountryDto?>> Handle(GetByIdQuery query, CancellationToken cancellationToken)
     {
         var result = await repo.GetByIdAsync<Domain.Entities.Read.Country>(query.Id);
-        var countryDto = new CountryDto(query.Id, result.Code, result.Name, result.CreatedDate, result.ModifiedDate, result.Order);
+        var countryDto = new CountryDto(query.Id, result.Code, result.Name, result.CreatedDate, result.UpdatedDate, result.Order);
 
         return Result.Ok(countryDto);
     }

@@ -7,16 +7,19 @@ public class Base
     //Base is abstract so we test it with other entities
 
     Country country { get; set; }
+    public string code = string.Empty;
+    public string name = string.Empty;
+    public decimal order = 0.0M;
     public Base()
     {
-        country = new();
+        country = new(code, name, order);
     }
 
     [Fact]
     public void CreatedDate_ShouldInitialize_WhenDefault()
     {
         // Arrange
-        var country = new Country();
+        var country = new Country(code, name, order);
 
         // Act
         var firstRead = country.CreatedDate;
@@ -31,7 +34,7 @@ public class Base
     public void UpdatedDate_ShouldChange_GetAgain()
     {
         // Arrange
-        var country = new Country();
+        var country = new Country(code, name, order);
 
         // Act
         var firstRead = country.UpdatedDate;

@@ -9,6 +9,7 @@
     <ItemGroup>
       <PackageReference Include="Elastic.Clients.ElasticSearch" Version="9.2.1" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
+      <ProjectReference Include="..\..\helper\Helper\Helper.csproj" />
       <ProjectReference Include="./../../domain/Domain.Read/Domain.Read.csproj" />
     </ItemGroup>
 

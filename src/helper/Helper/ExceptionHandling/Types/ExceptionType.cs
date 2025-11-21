@@ -1,4 +1,4 @@
-﻿namespace Helper.CustomException;
+﻿namespace Helper.ExceptionHandling.Types;
 
 public enum ExceptionType : byte
 {

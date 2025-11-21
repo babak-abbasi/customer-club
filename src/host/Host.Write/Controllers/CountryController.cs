@@ -5,7 +5,7 @@ using Service.Commands.Country;
 namespace Host.Write.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/v1/country")]
 public class CountryController(IMediator _mediator) : ControllerBase
 {
     // POST api/v1/country

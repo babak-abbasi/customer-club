@@ -1,6 +1,6 @@
 using Domain.Read;
 using Elastic.Clients.Elasticsearch;
-using Helper.CustomException;
+using Helper.ExceptionHandling.Types;
 
 namespace Repository.Read;
 
@@ -19,7 +19,7 @@ public abstract class BaseRepository(ElasticsearchClient client)
         }
         catch (Exception exception)
         {
-            throw new LoggableException(ExceptionMessage.NoParameter.Data_Read_Failure, ExceptionMessage.WithParameter.ElasticSearch_Read_Failure(exception.Message));
+            throw new LoggableException(ExceptionMessage.NoParameter.Data_Read_Failure, ExceptionMessage.WithParameter.ElasticSearch_Read_Failure(exception.Message), exception);
         }
     }
 
@@ -49,7 +49,7 @@ public abstract class BaseRepository(ElasticsearchClient client)
         }
         catch (Exception exception)
         {
-            throw new LoggableException(ExceptionMessage.NoParameter.Data_Read_Failure, ExceptionMessage.WithParameter.ElasticSearch_Read_Failure(exception.Message));
+            throw new LoggableException(ExceptionMessage.NoParameter.Data_Read_Failure, ExceptionMessage.WithParameter.ElasticSearch_Read_Failure(exception.Message), exception);
         }
     }
 }

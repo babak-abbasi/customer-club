@@ -1,3 +1,4 @@
+using Helper.CustomException;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace CustomMiddlewares;
@@ -13,6 +14,11 @@ public class CustomExceptionHandler
 
     public ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
+        if(exception is CustomException customException)
+        {
+            
+        }
+
         logger.LogError(@$"Error Message: {exception.Message}, Time of occurrence {DateTime.UtcNow}");
 
         return ValueTask.FromResult(false);

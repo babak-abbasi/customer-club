@@ -1,15 +1,24 @@
+using FluentResults;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Service.Queries.Country;
+using Service.Response.Country;
 
 namespace Host.Read;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/v1/country")]
 public class CountryController(IMediator _mediator) : ControllerBase
 {
-    // POST api/v1/country
-    [HttpGet("{id}")]
+    /// <summary>
+    /// Finds a country by it's Id
+    /// </summary>
+    /// <param name="id">The Id of the country</param>
+    /// <returns></returns>
+    [HttpGet]
+    [ProducesResponseType(typeof(Result<CountryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetByIdAsync([FromQuery] GetByIdQuery query, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(query, cancellationToken);
@@ -17,11 +26,19 @@ public class CountryController(IMediator _mediator) : ControllerBase
         if(result.IsFailed)
             return BadRequest(result.Errors);
 
-        return Ok(result.Value);
+        return Ok(result);
     }
 
-    // POST api/v1/countries
+    /// <summary>
+    /// Finds countries by name or code
+    /// </summary>
+    /// <param name="code">The Code of the country</param>
+    /// <param name="name">The Name of the country</param>
+    /// <returns></returns>
     [HttpGet("countries")]
+    [ProducesResponseType(typeof(Result<List<CountryDto>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetAllQuery(), cancellationToken);
@@ -29,6 +46,6 @@ public class CountryController(IMediator _mediator) : ControllerBase
         if (result.IsFailed)
             return BadRequest(result.Errors);
 
-        return Ok(result.Value);
+        return Ok(result);
     }
 }

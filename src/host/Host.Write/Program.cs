@@ -7,10 +7,10 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<Repository.Write.Options>(builder.Configuration);
-builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.CommandHandlers.Country.CreateCountryCommandHandler>());
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ElasticsearchClient>(config => {
 
     var options = config.GetRequiredService<IOptions<Repository.Write.Options>>();
@@ -26,12 +26,12 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 app.UseRouting();
 app.MapDefaultControllerRoute();
-
 
 app.Run();

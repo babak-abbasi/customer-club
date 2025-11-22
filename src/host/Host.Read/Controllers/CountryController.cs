@@ -39,9 +39,9 @@ public class CountryController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(typeof(Result<List<CountryDto>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAsync([FromQuery] GetQuery query, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetAllQuery(), cancellationToken);
+        var result = await _mediator.Send(query, cancellationToken);
 
         if (result.IsFailed)
             return BadRequest(result.Errors);

@@ -14,7 +14,7 @@ public class CountryRepository(ElasticsearchClient client) : ICountryRepository
             string id = string.Empty;
             var country = new Country(code, name, order);
 
-            var response = await client.IndexAsync(country, x => x.Index("country"));
+            var response = await client.IndexAsync(country, x => x.Index(nameof(Country).ToLower()));
 
             if (!response.IsValidResponse)
                 throw new LoggableException(ExceptionMessage.NoParameter.Data_Write_Failure, ExceptionMessage.WithParameter.ElasticSearch_Write_Failure(response?.DebugInformation));

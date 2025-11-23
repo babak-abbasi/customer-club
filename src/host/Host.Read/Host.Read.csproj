@@ -10,7 +10,6 @@
     <PackageReference Include="Elastic.Clients.ElasticSearch" Version="9.2.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
-    <ProjectReference Include="..\..\helper\Helper\Helper.csproj" />
 
     <ProjectReference Include="./../../service/Service.Read/Service.Read.csproj" />
     <ProjectReference Include="./../../repository/Repository.Read/Repository.Read.csproj" />

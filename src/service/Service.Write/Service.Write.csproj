@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="4.0.0" />
     <PackageReference Include="MediatR" Version="13.1.0" />
+    <ProjectReference Include="..\..\helper\Helper\Helper.csproj" />
     <ProjectReference Include="./../../domain/Domain.Write/Domain.Write.csproj" />
   </ItemGroup>
 

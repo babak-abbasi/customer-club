@@ -25,6 +25,7 @@ builder.Services.AddControllers(options =>
 });
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.CommandHandlers.Country.CreateCountryCommandHandler>());
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ElasticsearchClient>(config =>
 {

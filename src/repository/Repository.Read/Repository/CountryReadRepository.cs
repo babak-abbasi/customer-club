@@ -1,5 +1,5 @@
-using Domain.Read.Repository;
 using Elastic.Clients.Elasticsearch;
+using Service.Read.Repository;
 
 namespace Repository.Read;
 

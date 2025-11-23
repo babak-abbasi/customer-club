@@ -1,7 +1,7 @@
 using MediatR;
 using FluentResults;
 using Service.Response.Country;
-using Domain.Read.Repository;
+using Service.Read.Repository;
 using Service.Queries.Country;
 
 namespace Service.QueryHandlers.Country;

@@ -33,13 +33,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D34914E5-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain-test", "domain-test", "{4AFC71AE-E018-4BD7-86EE-91A9C45F7DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Read.Test", "test\domain-test\Domain.Read.Test\Domain.Read.Test.csproj", "{D9B35778-2BE1-4B2C-995F-E58F6DFD8B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Read.Test", "test\domain-test\Domain.Read.Test\Domain.Read.Test.csproj", "{D9B35778-2BE1-4B2C-995F-E58F6DFD8B25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Write.Test", "test\domain-test\Domain.Write.Test\Domain.Write.Test.csproj", "{6C7159D6-E242-41D3-AAEA-69C87801F51E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Write.Test", "test\domain-test\Domain.Write.Test\Domain.Write.Test.csproj", "{6C7159D6-E242-41D3-AAEA-69C87801F51E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helper", "helper", "{F94CB25F-0D07-4C55-A4DF-273963A89893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "src\helper\Helper\Helper.csproj", "{5C3E7F7D-0D0C-4E93-B035-D36BD321D52A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper", "src\helper\Helper\Helper.csproj", "{5C3E7F7D-0D0C-4E93-B035-D36BD321D52A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

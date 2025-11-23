@@ -1,7 +1,7 @@
 ﻿using FluentResults;
 using Helper.ExceptionHandling.Handler;
 
-namespace Host.Write.CustomMiddlewares;
+namespace Host.Read.CustomMiddlewares;
 
 public class ExceptionMiddleware
 {
@@ -25,11 +25,11 @@ public class ExceptionMiddleware
         catch (Exception ex)
         {
             _logger.LogError(ex, ExceptionMessage.NoParameter.Unhandled_Exception);
-            await WriteFluentError(context, StatusCodes.Status500InternalServerError, ExceptionMessage.NoParameter.An_Unexpected_Error_Occurred);
+            await ReadFluentError(context, StatusCodes.Status500InternalServerError, ExceptionMessage.NoParameter.An_Unexpected_Error_Occurred);
         }
     }
 
-    private static async Task WriteFluentError(HttpContext context, int statusCode, string message)
+    private static async Task ReadFluentError(HttpContext context, int statusCode, string message)
     {
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = statusCode;

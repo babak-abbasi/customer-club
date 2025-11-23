@@ -1,21 +1,20 @@
 ﻿using Domain.Repository;
 using Domain.Write.Entities;
-using Domain.Write.Repository;
 using Elastic.Clients.Elasticsearch;
 using Helper.ExceptionHandling.Types;
 
 namespace Repository.Write;
 
-public class CountryRepository(ElasticsearchClient client) : BaseRepository(client), ICountryRepository
+public class ProvinceRepository(ElasticsearchClient client) : IProvinceRepository
 {
-    public async Task<string> AddCountryAsync(string name, string code, decimal order)
+    public async Task<string> AddProvinceAsync(string name, string code, decimal order, string countryId)
     {
         try
         {
             string id = string.Empty;
-            var country = new Country(code, name, order);
+            var province = new Province(code, name, order, countryId);
 
-            var response = await client.IndexAsync(country, x => x.Index(nameof(Country).ToLower()));
+            var response = await client.IndexAsync(province, x => x.Index(nameof(Province).ToLower()));
 
             if (!response.IsValidResponse)
                 throw new LoggableException(ExceptionMessage.NoParameter.Data_Write_Failure, ExceptionMessage.WithParameter.ElasticSearch_Write_Failure(response?.DebugInformation));

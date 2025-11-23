@@ -1,6 +1,6 @@
 namespace Domain.Read;
 
-public class Base
+public abstract class AggreagateRoot
 {
 	public string Id { get; set; }
     public string Name { get; set; }

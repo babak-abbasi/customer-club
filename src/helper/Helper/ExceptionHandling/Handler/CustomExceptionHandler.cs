@@ -2,7 +2,7 @@
 
 namespace Helper.ExceptionHandling.Handler;
 
-public abstract class CustomExceptionHandler
+public interface CustomExceptionHandler
 {
-    public abstract void HandleException(CustomException customException);
+    public void HandleException(CustomException customException);
 }

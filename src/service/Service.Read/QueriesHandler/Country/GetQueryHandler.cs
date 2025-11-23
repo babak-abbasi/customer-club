@@ -1,4 +1,4 @@
-﻿using Domain.Read.Repository;
+﻿using Service.Read.Repository;
 using FluentResults;
 using Helper.Pagination;
 using MediatR;

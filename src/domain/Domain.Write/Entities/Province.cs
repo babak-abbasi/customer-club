@@ -2,7 +2,7 @@
 
 namespace Domain.Write.Entities;
 
-public class Province : Base
+public class Province : AggregateRoot
 {
     public Province(string code, string name, decimal order, string countryId) : base(code, name, order)
     {

@@ -2,6 +2,8 @@ using MediatR;
 using FluentResults;
 using Service.Commands.Country;
 using Domain.Repository;
+using Helper.ExceptionHandling.Types;
+using Domain.Write.ExceptionHandling.Types;
 
 namespace Service.CommandHandlers.Country;
 
@@ -14,8 +16,23 @@ public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand,
     }
     public async Task<Result<string>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
     {
-        var result = await repo.AddCountryAsync(request.Name, request.Code, request.Order);
+        try
+        {
+            var result = await repo.AddAsync<Domain.Write.Entities.Country>(new Domain.Write.Entities.Country(request.Name, request.Code, request.Order));
 
-        return Result.Ok(result);
+            return Result.Ok(result);
+        }
+        catch (DomainResponsiveException exception)
+        {
+            throw new ResponsiveException(exception.Message);
+        }
+        catch (DomainLoggableException exception)
+        {
+            throw new LoggableException(exception.Message, exception.LoggableMessage);
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 }

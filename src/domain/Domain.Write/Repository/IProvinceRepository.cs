@@ -1,6 +1,7 @@
-﻿namespace Domain.Repository;
+﻿using Domain.Write.Repository;
 
-public interface IProvinceRepository
+namespace Domain.Repository;
+
+public interface IProvinceRepository : IBaseRepository
 {
-    Task<string> AddProvinceAsync(string name, string code, decimal order, string countryId);
 }

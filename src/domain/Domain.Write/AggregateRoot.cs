@@ -1,8 +1,8 @@
 namespace Domain.Write;
 
-public abstract class Base
+public abstract class AggregateRoot
 {
-    protected Base(string code, string name, decimal order)
+    protected AggregateRoot(string code, string name, decimal order)
     {
         Code = code;
         Name = name;

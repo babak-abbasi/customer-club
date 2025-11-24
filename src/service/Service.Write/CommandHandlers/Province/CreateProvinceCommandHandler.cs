@@ -25,7 +25,7 @@ public class CreateProvinceCommandHandler : IRequestHandler<CreateProvinceComman
             if (country is null)
                 throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
 
-            var result = await repo.AddProvinceAsync(request.Name, request.Code, request.Order, request.CountryId);
+            var result = await repo.AddAsync<Domain.Write.Entities.Province>(new Domain.Write.Entities.Province(request.Name, request.Code, request.Order, request.CountryId));
 
             return Result.Ok(result);
         }
@@ -41,6 +41,5 @@ public class CreateProvinceCommandHandler : IRequestHandler<CreateProvinceComman
         {
             throw;
         }
-
     }
 }

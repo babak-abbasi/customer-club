@@ -9,16 +9,23 @@ namespace Repository.Read;
 
 public abstract class BaseRepository(ElasticsearchClient client) : IBaseRepository
 {
-    public virtual async Task<T?> GetByIdAsync<T>(string id) where T : AggreagateRoot
+    public virtual async Task<T> GetByIdAsync<T>(string id) where T : AggreagateRoot
     {
         try
         {
-            var response = await client.GetAsync<T>(id, x => x.Index(typeof(T).Name.ToLower()));
+            var response = await client.SearchAsync<T>(x => x.Indices(typeof(T).Name.ToLower())
+                .Query(query => query
+                    .Term(term => 
+                    {
+                        term.Field("id").Value(id).Field("isDeleted").Value(false);
+                    })
+                )
+            );
 
-            if (!response.IsValidResponse)
+            if (!response.IsValidResponse || response.Documents.FirstOrDefault() is null)
                 throw new ResponsiveException(ExceptionMessage.NoParameter.NotFound);
 
-            return response.Source;
+            return response.Documents.First();
         }
         catch (Exception exception)
         {
@@ -45,6 +52,11 @@ public abstract class BaseRepository(ElasticsearchClient client) : IBaseReposito
                     });
                 }
             }
+            shouldQueries.Add(new TermQuery 
+            { 
+                Field = "isDeleted",
+                Value = "false"
+            });
 
             var searchRequest = new SearchRequest(typeof(T).Name.ToLower())
             {

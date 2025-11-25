@@ -40,4 +40,19 @@ public class CountryController(IMediator _mediator) : ControllerBase
 
         return Ok();
     }
+
+    // POST api/v1/country/id
+    [HttpDelete]
+    public async Task<IActionResult> PutCountry([Required] string id, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new DeleteCountryCommand()
+        {
+            Id = id
+        }, cancellationToken);
+
+        if (result.IsFailed)
+            return BadRequest(result.Errors);
+
+        return Ok();
+    }
 }

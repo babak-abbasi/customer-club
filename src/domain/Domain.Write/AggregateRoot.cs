@@ -21,4 +21,11 @@ public abstract class AggregateRoot
     public DateTime UpdatedDate => (_createdDate = DateTime.UtcNow);
 
     public decimal Order { get; set; }
+
+    public bool IsActive { get; set; }
+    public bool IsDeleted { get; set; }
+
+    public void Delete() => IsDeleted = true;
+    public void Activate() => IsActive = true;
+    public void DeActivate() => IsActive = false;
 }

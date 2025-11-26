@@ -8,7 +8,7 @@ using Service.Write;
 
 namespace Service.CommandHandlers.Province;
 
-public class CreateProvinceCommandHandler : IRequestHandler<CreateProvinceCommand, Result<string>>
+public class CreateProvinceCommandHandler : IRequestHandler<CreateProvinceCommand, Result<int>>
 {
     private readonly IProvinceRepository repo;
     private readonly ICountryRepository countryRepo;
@@ -17,15 +17,15 @@ public class CreateProvinceCommandHandler : IRequestHandler<CreateProvinceComman
         this.repo = repo;
         this.countryRepo = countryRepo;
     }
-    public async Task<Result<string>> Handle(CreateProvinceCommand request, CancellationToken cancellationToken)
+    public async Task<Result<int>> Handle(CreateProvinceCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var country = await countryRepo.GetByIdAsync<Domain.Write.Entities.Country>(request.CountryId);
+            var country = await countryRepo.GetByIdAsync(request.CountryId);
             if (country is null)
                 throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
 
-            var result = await repo.AddAsync<Domain.Write.Entities.Province>(new Domain.Write.Entities.Province(request.Name, request.Code, request.Order, request.CountryId));
+            var result = await repo.AddAsync(new Domain.Write.Entities.Province(default, request.Name, request.Code, request.Order, request.CountryId));
 
             return Result.Ok(result);
         }

@@ -1,8 +1,10 @@
 ﻿using Domain.Repository;
-using Elastic.Clients.Elasticsearch;
+using Domain.Write.Entities;
+using Repository.Write.EFContext;
+
 
 namespace Repository.Write;
 
-public class ProvinceRepository(ElasticsearchClient client) : BaseRepository(client), IProvinceRepository
+public class ProvinceRepository(EFDBContext eFContext) : BaseRepository<int, Province>(eFContext), IProvinceRepository
 {
 }

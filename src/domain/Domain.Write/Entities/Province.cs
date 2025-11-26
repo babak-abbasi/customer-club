@@ -1,16 +1,12 @@
-﻿using Domain.Write.ExceptionHandling.Types;
+﻿namespace Domain.Write.Entities;
 
-namespace Domain.Write.Entities;
-
-public class Province : AggregateRoot
+public class Province : AggregateRoot<int>
 {
-    public Province(string code, string name, decimal order, string countryId) : base(code, name, order)
+    public Province(int id, string code, string name, decimal order, int countryId) : base(id, code, name, order)
     {
-        if (string.IsNullOrEmpty(countryId))
-            throw new DomainResponsiveException(ExceptionMessage.NoParameter.NotFound);
-
         CountryId = countryId;
     }
 
-    public string CountryId { get; init; }
+    public int CountryId { get; init; }
+    public Country Country { get; init; }
 }

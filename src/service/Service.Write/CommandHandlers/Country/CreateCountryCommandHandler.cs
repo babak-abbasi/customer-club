@@ -7,18 +7,18 @@ using Domain.Write.ExceptionHandling.Types;
 
 namespace Service.CommandHandlers.Country;
 
-public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand, Result<string>>
+public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand, Result<int>>
 {
     private readonly ICountryRepository repo;
     public CreateCountryCommandHandler(ICountryRepository repo)
     {
         this.repo = repo;
     }
-    public async Task<Result<string>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
+    public async Task<Result<int>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await repo.AddAsync<Domain.Write.Entities.Country>(new Domain.Write.Entities.Country(request.Name, request.Code, request.Order));
+            var result = await repo.AddAsync(new Domain.Write.Entities.Country(default, request.Name, request.Code, request.Order));
 
             return Result.Ok(result);
         }

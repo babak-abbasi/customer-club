@@ -9,4 +9,5 @@ public class GetQuery : RequestPagination, IRequest<Result<ResponsePagination<Pr
 {
     public string? Name { get; set; }
     public string? Code { get; set; }
+    public string? CountryId { get; set; }
 }

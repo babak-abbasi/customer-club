@@ -1,17 +1,17 @@
-﻿  <Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-      <TargetFramework>net9.0</TargetFramework>
-      <ImplicitUsings>enable</ImplicitUsings>
-      <Nullable>enable</Nullable>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Elastic.Clients.ElasticSearch" Version="9.2.1" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
-      <ProjectReference Include="..\..\helper\Helper\Helper.csproj" />
-      <ProjectReference Include="..\..\service\Service.Read\Service.Read.csproj" />
-      <ProjectReference Include="./../../domain/Domain.Read/Domain.Read.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Elastic.Clients.ElasticSearch" />
+		<PackageReference Include="Microsoft.Extensions.Options" />
+		<ProjectReference Include="..\..\helper\Helper\Helper.csproj" />
+		<ProjectReference Include="..\..\service\Service.Read\Service.Read.csproj" />
+		<ProjectReference Include="./../../domain/Domain.Read/Domain.Read.csproj" />
+	</ItemGroup>
 
-  </Project>
+</Project>

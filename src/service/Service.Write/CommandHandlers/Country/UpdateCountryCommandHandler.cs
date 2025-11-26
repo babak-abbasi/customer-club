@@ -20,14 +20,14 @@ public class UpdateCountryCommandHandler : IRequestHandler<UpdateCountryCommand,
     {
         try
         {
-            var country = await repo.GetByIdAsync<Domain.Write.Entities.Country>(request.Id);
+            var country = await repo.GetByIdAsync(request.Id);
 
             if (country is null)
                 throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
 
             country.Update(request.Code, request.Name, request.Order);
 
-            await repo.UpdateAsync<Domain.Write.Entities.Country>(request.Id, country);
+            await repo.UpdateAsync(request.Id, country);
 
             return Result.Ok();
         }

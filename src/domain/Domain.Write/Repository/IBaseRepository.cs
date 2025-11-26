@@ -1,8 +1,8 @@
 ﻿namespace Domain.Write.Repository;
 
-public interface IBaseRepository
+public interface IBaseRepository<TId, T> where TId : struct where T : AggregateRoot<TId>
 {
-    Task<string> AddAsync<T>(T input) where T : AggregateRoot;
-    Task<T?> GetByIdAsync<T>(string id) where T : AggregateRoot;
-    Task UpdateAsync<T>(string id, T entity) where T : AggregateRoot;
+    Task<TId> AddAsync(T input, CancellationToken cancellationToken = default);
+    Task<T?> GetByIdAsync(TId id, CancellationToken cancellationToken = default);
+    Task UpdateAsync(TId id, T entity, CancellationToken cancellationToken = default);
 }

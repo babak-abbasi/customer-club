@@ -1,9 +1,9 @@
 ﻿using FluentResults;
 using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace Service.Write.Commands.Country;
 
-public class DeleteCountryCommand : IRequest<Result>
+public record DeleteCountryCommand([Required]int Id) : IRequest<Result>
 {
-    public string Id { get; set; }
 }

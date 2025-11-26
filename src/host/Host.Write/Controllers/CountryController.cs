@@ -20,39 +20,30 @@ public class CountryController(IMediator _mediator) : ControllerBase
         if(result.IsFailed)
             return BadRequest(result.Errors);
 
-        return Ok(result.Value);
+        return Ok(result);
     }
 
     // POST api/v1/country/id
     [HttpPut()]
-    public async Task<IActionResult> PutCountry([Required]string id ,[FromBody] UpdateCountryRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> PutCountry([Required] int id ,[FromBody] UpdateCountryRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new UpdateCountryCommand() 
-        {
-            Id = id,
-            Name = request.Name,
-            Code = request.Code,
-            Order = request.Order,
-        }, cancellationToken);
+        var result = await _mediator.Send(new UpdateCountryCommand(id, request.Name, request.Code, request.Order), cancellationToken);
 
         if (result.IsFailed)
-            return BadRequest(result.Errors);
+            return BadRequest(result);
 
-        return Ok();
+        return Ok(result);
     }
 
     // POST api/v1/country/id
     [HttpDelete]
-    public async Task<IActionResult> PutCountry([Required] string id, CancellationToken cancellationToken)
+    public async Task<IActionResult> PutCountry([Required] int id, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new DeleteCountryCommand()
-        {
-            Id = id
-        }, cancellationToken);
+        var result = await _mediator.Send(new DeleteCountryCommand(id), cancellationToken);
 
         if (result.IsFailed)
             return BadRequest(result.Errors);
 
-        return Ok();
+        return Ok(result);
     }
 }

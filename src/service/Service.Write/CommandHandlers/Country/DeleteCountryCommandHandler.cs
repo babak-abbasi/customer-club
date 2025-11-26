@@ -19,7 +19,7 @@ public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommand,
     {
         try
         {
-            var country = await repo.GetByIdAsync<Domain.Write.Entities.Country>(request.Id);
+            var country = await repo.GetByIdAsync(request.Id);
 
             if (country is null)
                 throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));

@@ -15,8 +15,8 @@ public class ProvinceController(IMediator _mediator) : ControllerBase
         var result = await _mediator.Send(command, cancellationToken);
 
         if (result.IsFailed)
-            return BadRequest(result.Errors);
+            return BadRequest(result);
 
-        return Ok(result.Value);
+        return Ok(result);
     }
 }

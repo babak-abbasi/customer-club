@@ -1,24 +1,24 @@
 ﻿using Domain.Write;
 using Domain.Write.Repository;
-using Elastic.Clients.Elasticsearch;
 using Helper.ExceptionHandling.Types;
+using Repository.Write.EFContext;
 
 namespace Repository.Write;
 
-public abstract class BaseRepository(ElasticsearchClient client) : IBaseRepository
+public abstract class BaseRepository<TId, T>(EFDBContext eFDBContext) 
+    : IBaseRepository<TId, T> 
+    where TId : struct 
+    where T : AggregateRoot<TId>
 {
-    public virtual async Task<string> AddAsync<T>(T input) where T : AggregateRoot
+    public virtual async Task<TId> AddAsync(T input, CancellationToken cancellationToken = default)
     {
         try
         {
-            string id = string.Empty;
+            await eFDBContext.Set<T>().AddAsync(input);
 
-            var response = await client.IndexAsync(input, x => x.Index(nameof(T).ToLower()));
+            var result = await eFDBContext.SaveChangesAsync();
 
-            if (!response.IsValidResponse)
-                throw new LoggableException(ExceptionMessage.NoParameter.Data_Create_Failure, ExceptionMessage.WithParameter.ElasticSearch_Create_Failure(response?.DebugInformation));
-
-            return response.Id;
+            return input.Id;
         }
         catch (Exception exception)
         {
@@ -26,16 +26,13 @@ public abstract class BaseRepository(ElasticsearchClient client) : IBaseReposito
         }
     }
 
-    public virtual async Task<T?> GetByIdAsync<T>(string id) where T : AggregateRoot
+    public virtual async Task<T?> GetByIdAsync(TId id, CancellationToken cancellationToken = default)
     {
         try
         {
-            var response = await client.GetAsync<T>(id, x => x.Index(typeof(T).Name.ToLower()));
+            var result = await eFDBContext.Set<T>().FindAsync(id);
 
-            if (!response.IsValidResponse)
-                throw new ResponsiveException(ExceptionMessage.NoParameter.NotFound);
-
-            return response.Source;
+            return result;
         }
         catch (Exception exception)
         {
@@ -43,14 +40,11 @@ public abstract class BaseRepository(ElasticsearchClient client) : IBaseReposito
         }
     }
 
-    public virtual async Task UpdateAsync<T>(string id, T entity) where T : AggregateRoot
+    public virtual async Task UpdateAsync(TId id, T entity, CancellationToken cancellationToken = default)
     {
         try
         {
-            var response = await client.UpdateAsync<T, T>(typeof(T).Name.ToLower(), id, u => u.Doc(entity));
-
-            if (!response.IsValidResponse)
-                throw new LoggableException(ExceptionMessage.NoParameter.Data_Update_Failure, ExceptionMessage.WithParameter.ElasticSearch_Update_Failure(response?.DebugInformation));
+            eFDBContext.Set<T>().Update(entity);
         }
         catch (Exception exception)
         {

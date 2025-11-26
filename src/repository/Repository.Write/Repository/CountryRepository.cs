@@ -1,11 +1,10 @@
 ﻿using Domain.Repository;
 using Domain.Write.Entities;
-using Elastic.Clients.Elasticsearch;
-using Helper.ExceptionHandling.Types;
+using Repository.Write.EFContext;
 
 namespace Repository.Write;
 
-public class CountryRepository(ElasticsearchClient client) : BaseRepository(client), ICountryRepository
+public class CountryRepository(EFDBContext eFContext) : BaseRepository<int, Country>(eFContext), ICountryRepository
 {
 
 }

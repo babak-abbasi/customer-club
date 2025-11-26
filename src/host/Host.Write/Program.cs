@@ -1,17 +1,17 @@
 using Domain.Repository;
-using Elastic.Clients.Elasticsearch;
-using Elastic.Transport;
 using Helper.ExceptionHandling.Handler;
 using Helper.ExceptionHandling.Types;
 using Host.Write.CustomMiddlewares;
 using Host.Write.Filters.ExceptionFilters;
-using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 using Repository.Write;
+using Repository.Write.EFContext;
+using Service.Write;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.Configure<Repository.Write.Options>(builder.Configuration);
-builder.Services.AddSingleton<CustomExceptionRegistery>(options =>
+builder.Services.Configure<Options>(builder.Configuration);
+builder.Services.AddSingleton(options =>
 {
     CustomExceptionRegistery registery = new();
     registery.Register<ResponsiveException>(new ResponsiveExceptionHandler());
@@ -27,16 +27,11 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Se
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ElasticsearchClient>(config =>
+builder.Services.AddDbContext<EFDBContext>((sp, options) =>
 {
+    var dbOptions = sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<Options>>().Value;
 
-    var options = config.GetRequiredService<IOptions<Repository.Write.Options>>();
-
-    var settings = new ElasticsearchClientSettings(new Uri(options.Value.ElasticSearch.Url))
-                .CertificateFingerprint(options.Value.ElasticSearch.FingerPrint)
-                .Authentication(new BasicAuthentication(options.Value.ElasticSearch.UserName, options.Value.ElasticSearch.Password));
-
-    return new ElasticsearchClient(settings);
+    options.UseNpgsql(dbOptions.ConnectionStrings.WriteDb);
 });
 
 var app = builder.Build();

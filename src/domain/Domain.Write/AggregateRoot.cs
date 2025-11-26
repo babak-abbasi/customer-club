@@ -1,14 +1,16 @@
 namespace Domain.Write;
 
-public abstract class AggregateRoot
+public abstract class AggregateRoot<T>
 {
-    protected AggregateRoot(string code, string name, decimal order)
+    protected AggregateRoot(T id,  string code, string name, decimal order)
     {
+        Id = id;
         Code = code;
         Name = name;
         Order = order;
     }
 
+    public T Id { get; set; }
     public string Name { get; set; }
 	public string Code { get; set; }
 
@@ -22,8 +24,8 @@ public abstract class AggregateRoot
 
     public decimal Order { get; set; }
 
-    public bool IsActive { get; set; }
-    public bool IsDeleted { get; set; }
+    public bool IsActive { get; set; } = true;
+    public bool IsDeleted { get; set; } = false;
 
     public void Delete() => IsDeleted = true;
     public void Activate() => IsActive = true;

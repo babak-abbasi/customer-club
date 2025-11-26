@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Elastic.Clients.ElasticSearch" Version="9.2.1" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
+	<ItemGroup>
+		<PackageReference Include="Elastic.Clients.ElasticSearch" />
+		<PackageReference Include="Microsoft.Extensions.Options" />
+		<PackageReference Include="Swashbuckle.AspNetCore" />
 
-    <ProjectReference Include="./../../service/Service.Read/Service.Read.csproj" />
-    <ProjectReference Include="./../../repository/Repository.Read/Repository.Read.csproj" />
-  </ItemGroup>
+		<ProjectReference Include="./../../service/Service.Read/Service.Read.csproj" />
+		<ProjectReference Include="./../../repository/Repository.Read/Repository.Read.csproj" />
+	</ItemGroup>
 
 </Project>

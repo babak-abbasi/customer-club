@@ -1,4 +1,5 @@
 ﻿using Domain.Repository;
+using Domain.Write.Entities;
 using Domain.Write.ExceptionHandling.Types;
 using FluentResults;
 using Helper.ExceptionHandling.Types;
@@ -11,22 +12,19 @@ namespace Service.CommandHandlers.Country;
 public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommand, Result>
 {
     private readonly ICountryRepository repo;
-    public DeleteCountryCommandHandler(ICountryRepository repo)
+    private readonly CountryService countryService;
+    public DeleteCountryCommandHandler(ICountryRepository repo, CountryService countryService)
     {
         this.repo = repo;
+        this.countryService = countryService;
     }
     public async Task<Result> Handle(DeleteCountryCommand request, CancellationToken cancellationToken = default)
     {
         try
         {
-            var country = await repo.GetByIdAsync(request.Id);
+            await countryService.DeleteAsync(request.Id);
 
-            if (country is null)
-                throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
-
-            country.Delete();
-
-            await repo.UpdateAsync(request.Id, country);
+            //await repo.UpdateAsync(request.Id, country);
 
             return Result.Ok();
         }

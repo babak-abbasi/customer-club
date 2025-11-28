@@ -1,4 +1,5 @@
 ﻿using Domain.Repository;
+using Domain.Write.Entities;
 using Domain.Write.ExceptionHandling.Types;
 using FluentResults;
 using Helper.ExceptionHandling.Types;
@@ -11,9 +12,11 @@ namespace Service.CommandHandlers.Country;
 public class UpdateCountryCommandHandler : IRequestHandler<UpdateCountryCommand, Result>
 {
     private readonly ICountryRepository repo;
-    public UpdateCountryCommandHandler(ICountryRepository repo)
+    private readonly CountryService countryService;
+    public UpdateCountryCommandHandler(ICountryRepository repo, CountryService countryService)
     {
         this.repo = repo;
+        this.countryService = countryService;
     }
     public async Task<Result> Handle(UpdateCountryCommand request, CancellationToken cancellationToken = default)
     {
@@ -24,8 +27,7 @@ public class UpdateCountryCommandHandler : IRequestHandler<UpdateCountryCommand,
             if (country is null)
                 throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
 
-            country.Update(request.Code, request.Name, request.Order);
-
+            await countryService.UpdateAsync(country, request.Code, request.Name, request.Order);
             await repo.UpdateAsync(request.Id, country);
 
             return Result.Ok();

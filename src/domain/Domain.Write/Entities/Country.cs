@@ -1,7 +1,12 @@
-﻿namespace Domain.Write.Entities;
+﻿using Microsoft.VisualBasic.FileIO;
 
-public class Country(int id, string code, string name, decimal order) : AggregateRoot<int>(id, code, name, order, true, false)
+namespace Domain.Write.Entities;
+
+public class Country(int id, string code, string name, decimal order, bool isActive, bool isDeleted) 
+    : AggregateRoot<int>(id, code, name, order, isActive, isDeleted)
 {
+    public IEnumerable<Province> Provinces { get; set; }
+
     public void Update(string code, string name, decimal order)
     {
         Code = code;
@@ -9,5 +14,5 @@ public class Country(int id, string code, string name, decimal order) : Aggregat
         Order = order;
     }
 
-    public IEnumerable<Province> Provinces { get; set; }
+    internal void Delete() => IsDeleted = true;
 }

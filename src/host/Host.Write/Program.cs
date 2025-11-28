@@ -1,4 +1,5 @@
 using Domain.Repository;
+using Domain.Write.Entities;
 using Helper.ExceptionHandling.Handler;
 using Helper.ExceptionHandling.Types;
 using Host.Write.CustomMiddlewares;
@@ -26,6 +27,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Service.CommandHandlers.Country.CreateCountryCommandHandler>());
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();
+builder.Services.AddScoped<CountryService>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EFDBContext>((sp, options) =>
 {

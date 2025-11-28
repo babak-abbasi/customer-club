@@ -11,7 +11,6 @@ namespace Host.Write.Controllers;
 [Route("api/v1/country")]
 public class CountryController(IMediator _mediator) : ControllerBase
 {
-    // POST api/v1/country
     [HttpPost]
     public async Task<IActionResult> PostCountry([FromBody] CreateCountryCommand command, CancellationToken cancellationToken)
     {
@@ -23,7 +22,6 @@ public class CountryController(IMediator _mediator) : ControllerBase
         return Ok(result);
     }
 
-    // POST api/v1/country/id
     [HttpPut()]
     public async Task<IActionResult> PutCountry([Required] int id ,[FromBody] UpdateCountryRequest request, CancellationToken cancellationToken)
     {
@@ -35,7 +33,6 @@ public class CountryController(IMediator _mediator) : ControllerBase
         return Ok(result);
     }
 
-    // POST api/v1/country/id
     [HttpDelete]
     public async Task<IActionResult> PutCountry([Required] int id, CancellationToken cancellationToken)
     {

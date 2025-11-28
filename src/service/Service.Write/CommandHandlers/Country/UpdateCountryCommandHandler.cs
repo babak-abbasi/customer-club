@@ -1,11 +1,10 @@
-﻿using MediatR;
-using FluentResults;
-using Service.Commands.Country;
-using Domain.Repository;
-using Service.Write.Commands.Country;
-using Helper.ExceptionHandling.Types;
-using Service.Write;
+﻿using Domain.Repository;
 using Domain.Write.ExceptionHandling.Types;
+using FluentResults;
+using Helper.ExceptionHandling.Types;
+using MediatR;
+using Service.Write;
+using Service.Write.Commands.Country;
 
 namespace Service.CommandHandlers.Country;
 

@@ -12,7 +12,7 @@ using Repository.Write.EFContext;
 namespace Repository.Write.Migrations
 {
     [DbContext(typeof(EFDBContext))]
-    [Migration("20251126193250_init")]
+    [Migration("20251128090231_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -38,7 +38,7 @@ namespace Repository.Write.Migrations
                         .HasColumnType("varchar(64)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bool");
@@ -51,10 +51,10 @@ namespace Repository.Write.Migrations
                         .HasColumnType("varchar(64)");
 
                     b.Property<decimal>("Order")
-                        .HasColumnType("decimal(32, 30)");
+                        .HasColumnType("Decimal(28, 26)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -77,7 +77,7 @@ namespace Repository.Write.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bool");
@@ -90,10 +90,10 @@ namespace Repository.Write.Migrations
                         .HasColumnType("varchar(64)");
 
                     b.Property<decimal>("Order")
-                        .HasColumnType("decimal(32, 30)");
+                        .HasColumnType("Decimal(28, 26)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

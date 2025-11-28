@@ -45,6 +45,8 @@ public abstract class BaseRepository<TId, T>(EFDBContext eFDBContext)
         try
         {
             eFDBContext.Set<T>().Update(entity);
+
+            await eFDBContext.SaveChangesAsync();
         }
         catch (Exception exception)
         {

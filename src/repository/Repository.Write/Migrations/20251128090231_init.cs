@@ -20,11 +20,11 @@ namespace Repository.Write.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "varchar(64)", nullable: false),
                     Code = table.Column<string>(type: "varchar(64)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Order = table.Column<decimal>(type: "numeric(32,30)", nullable: false),
+                    Order = table.Column<decimal>(type: "numeric(28,26)", nullable: false),
                     IsActive = table.Column<bool>(type: "bool", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bool", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bool", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,11 +40,11 @@ namespace Repository.Write.Migrations
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "varchar(64)", nullable: false),
                     Code = table.Column<string>(type: "varchar(64)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Order = table.Column<decimal>(type: "numeric(32,30)", nullable: false),
+                    Order = table.Column<decimal>(type: "numeric(28,26)", nullable: false),
                     IsActive = table.Column<bool>(type: "bool", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bool", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bool", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

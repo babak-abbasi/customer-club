@@ -7,7 +7,9 @@ namespace Repository.Write.EFContext;
 
 public static class AggregateRootConfigurationExtensions
 {
-    public static void ConfigureAggregateRoot<TId, TRoot>(this EntityTypeBuilder<TRoot> builder) where TRoot : AggregateRoot<TId>
+    public static void ConfigureAggregateRoot<TId, TRoot>(this EntityTypeBuilder<TRoot> builder) 
+        where TId : struct 
+        where TRoot : AggregateRoot<TId>
     {
         builder.Property(p => p.Id).HasColumnType(PostgresDataTypes.Int).UseIdentityColumn().IsRequired();
         builder.Property(p => p.Order).HasColumnType(PostgresDataTypes.Decimal3230);

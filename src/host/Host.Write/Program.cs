@@ -31,7 +31,11 @@ builder.Services.AddDbContext<EFDBContext>((sp, options) =>
 {
     var dbOptions = sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<Options>>().Value;
 
-    options.UseNpgsql(dbOptions.ConnectionStrings.WriteDb);
+    options.UseNpgsql(dbOptions.ConnectionStrings.WriteDb)
+            .LogTo(Console.WriteLine, LogLevel.Information)
+            .EnableSensitiveDataLogging()   // shows parameter values
+            .EnableDetailedErrors(); ;
+
 });
 
 var app = builder.Build();

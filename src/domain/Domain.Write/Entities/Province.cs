@@ -2,7 +2,7 @@
 
 public class Province : AggregateRoot<int>
 {
-    public Province(int id, string code, string name, decimal order, int countryId) : base(id, code, name, order)
+    public Province(int id, string code, string name, decimal order, int countryId) : base(id, code, name, order, true, false)
     {
         CountryId = countryId;
     }

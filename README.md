@@ -12,7 +12,7 @@ This project is going to be an open source free to use dotnet based customer clu
 
 **Client:** Blazor, MAUI
 
-**Server:** Dotnet, Elasticsearch, MediatR, FluentResult
+**Server:** Dotnet, Elasticsearch, MediatR, FluentResult, EntityFramework
 
 
 ## Features

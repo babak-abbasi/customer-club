@@ -55,5 +55,6 @@ The domain of this projects include:
 - Slider
 - Badge
 - Advertisement
-
-
+- Brands
+- Comment
+- Faq

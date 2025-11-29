@@ -12,7 +12,7 @@ This project is going to be an open source free to use dotnet based customer clu
 
 **Client:** Blazor, MAUI
 
-**Server:** Dotnet, Elasticsearch, MediatR, FluentResult
+**Server:** Dotnet, Elasticsearch, MediatR, FluentResult, EntityFramework
 
 
 ## Features
@@ -50,5 +50,11 @@ The domain of this projects include:
 - Rule
 - Level
 - Event
-
-
+- Category
+- CategoryBar
+- Slider
+- Badge
+- Advertisement
+- Brands
+- Comment
+- Faq

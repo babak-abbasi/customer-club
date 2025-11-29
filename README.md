@@ -50,5 +50,10 @@ The domain of this projects include:
 - Rule
 - Level
 - Event
+- Category
+- CategoryBar
+- Slider
+- Badge
+- Advertisement
 
 

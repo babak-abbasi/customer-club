@@ -16,6 +16,9 @@ public class EFDBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(EFDBContext).Assembly);
+
+        modelBuilder.Entity<Country>().HasQueryFilter(u => !u.IsDeleted);
+        modelBuilder.Entity<Province>().HasQueryFilter(u => !u.IsDeleted);
     }
 
     public override int SaveChanges()

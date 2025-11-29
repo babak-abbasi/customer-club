@@ -13,7 +13,7 @@ public class GetByIdQueryHandler : IRequestHandler<GetByIdQuery, Result<Province
     {
         this.repo = repo;
     }
-    public async Task<Result<ProvinceDto?>> Handle(GetByIdQuery query, CancellationToken cancellationToken)
+    public async Task<Result<ProvinceDto?>> Handle(GetByIdQuery query, CancellationToken cancellationToken = default)
     {
         var result = await repo.GetByIdAsync<Domain.Entities.Read.Province>(query.Id);
         var ProvinceDto = new ProvinceDto(query.Id, result.Code, result.Name, result.CreatedDate, result.UpdatedDate, result.Order);

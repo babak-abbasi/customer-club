@@ -10,7 +10,7 @@ public class ProvinceController(IMediator _mediator) : ControllerBase
 {
     // POST api/v1/province
     [HttpPost]
-    public async Task<IActionResult> PostProvince([FromBody] CreateProvinceCommand command, CancellationToken cancellationToken)
+    public async Task<IActionResult> PostProvince([FromBody] CreateProvinceCommand command, CancellationToken cancellationToken = default)
     {
         var result = await _mediator.Send(command, cancellationToken);
 

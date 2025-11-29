@@ -15,7 +15,7 @@ public class GetByIdQueryHandler: IRequestHandler<GetByIdQuery, Result<CountryDt
     {
         this.repo = repo;
     }
-    public async Task<Result<CountryDto?>> Handle(GetByIdQuery query, CancellationToken cancellationToken)
+    public async Task<Result<CountryDto?>> Handle(GetByIdQuery query, CancellationToken cancellationToken = default)
     {
         try
         {

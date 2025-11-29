@@ -9,7 +9,7 @@ namespace Repository.Read;
 
 public abstract class BaseRepository(ElasticsearchClient client) : IBaseRepository
 {
-    public virtual async Task<T> GetByIdAsync<T>(string id) where T : AggreagateRoot
+    public virtual async Task<T> GetByIdAsync<T>(string id, CancellationToken cancellationToken = default) where T : AggreagateRoot
     {
         try
         {
@@ -33,7 +33,7 @@ public abstract class BaseRepository(ElasticsearchClient client) : IBaseReposito
         }
     }
 
-    public async Task<ResponsePagination<T>> GetAsync<T, TQuery>(TQuery query) where T : AggreagateRoot where TQuery : RequestPagination
+    public async Task<ResponsePagination<T>> GetAsync<T, TQuery>(TQuery query, CancellationToken cancellationToken = default) where T : AggreagateRoot where TQuery : RequestPagination
     {
         try
         {

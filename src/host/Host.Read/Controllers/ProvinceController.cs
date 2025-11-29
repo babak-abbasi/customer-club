@@ -19,7 +19,7 @@ public class ProvinceController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(typeof(Result<ProvinceDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetByIdAsync([FromQuery] GetByIdQuery query, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetByIdAsync([FromQuery] GetByIdQuery query, CancellationToken cancellationToken = default)
     {
         var result = await _mediator.Send(query, cancellationToken);
 
@@ -39,7 +39,7 @@ public class ProvinceController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(typeof(Result<List<ProvinceDto>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetAsync([FromQuery] GetQuery query, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAsync([FromQuery] GetQuery query, CancellationToken cancellationToken = default)
     {
         var result = await _mediator.Send(query, cancellationToken);
 

@@ -16,7 +16,7 @@ public class GetQueryHandler : IRequestHandler<GetQuery, Result<ResponsePaginati
         this.repo = repo;
     }
 
-    public async Task<Result<ResponsePagination<CountryDto>?>> Handle(GetQuery query, CancellationToken cancellationToken)
+    public async Task<Result<ResponsePagination<CountryDto>?>> Handle(GetQuery query, CancellationToken cancellationToken = default)
     {
         ResponsePagination<CountryDto>? countryDto = new() 
         { 

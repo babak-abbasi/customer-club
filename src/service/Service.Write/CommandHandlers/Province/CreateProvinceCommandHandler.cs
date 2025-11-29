@@ -17,7 +17,7 @@ public class CreateProvinceCommandHandler : IRequestHandler<CreateProvinceComman
         this.repo = repo;
         this.countryRepo = countryRepo;
     }
-    public async Task<Result<int>> Handle(CreateProvinceCommand request, CancellationToken cancellationToken)
+    public async Task<Result<int>> Handle(CreateProvinceCommand request, CancellationToken cancellationToken = default)
     {
         try
         {

@@ -8,6 +8,7 @@ internal static class ExceptionMessage
         internal static string Data_Create_Failure = "Data create failure.";
         internal static string Data_Read_Failure = "Data read failure.";
         internal static string Data_Update_Failure = "Data update failure.";
+        internal static string Data_Has_Been_Used = "Data has been used.";
     }
     internal static class WithParameter 
     {

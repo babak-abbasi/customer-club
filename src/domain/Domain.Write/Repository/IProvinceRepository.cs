@@ -5,4 +5,5 @@ namespace Domain.Repository;
 
 public interface IProvinceRepository : IBaseRepository<int, Province>
 {
+    Task<Province?> GetByCountryIdAsync(int countryId, CancellationToken cancellationToken = default);
 }

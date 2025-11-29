@@ -13,18 +13,28 @@ public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommand,
 {
     private readonly ICountryRepository repo;
     private readonly CountryService countryService;
-    public DeleteCountryCommandHandler(ICountryRepository repo, CountryService countryService)
+    private readonly IProvinceRepository provinceRepo;
+
+    public DeleteCountryCommandHandler(ICountryRepository repo, IProvinceRepository provinceRepo, CountryService countryService)
     {
         this.repo = repo;
         this.countryService = countryService;
+        this.provinceRepo = provinceRepo;
     }
     public async Task<Result> Handle(DeleteCountryCommand request, CancellationToken cancellationToken = default)
     {
         try
         {
-            await countryService.DeleteAsync(request.Id);
+            var country = await repo.GetByIdAsync(request.Id);
+            if (country is null)
+                throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
 
-            //await repo.UpdateAsync(request.Id, country);
+            var province = provinceRepo.GetByCountryIdAsync(country.Id, cancellationToken);
+            if (province != null)
+                throw new ResponsiveException(ExceptionMessage.NoParameter.Data_Has_Been_Used);
+
+            await countryService.DeleteAsync(request.Id);
+            await repo.UpdateAsync(request.Id, country);
 
             return Result.Ok();
         }

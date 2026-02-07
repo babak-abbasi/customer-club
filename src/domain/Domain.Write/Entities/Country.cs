@@ -1,8 +1,6 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿namespace Domain.Write.Entities;
 
-namespace Domain.Write.Entities;
-
-public class Country(int id, string code, string name, decimal order, bool isActive, bool isDeleted) 
+public class Country(int id, string code, string name, decimal order, bool isActive, bool isDeleted)
     : AggregateRoot<int>(id, code, name, order, isActive, isDeleted)
 {
     public IEnumerable<Province> Provinces { get; set; }

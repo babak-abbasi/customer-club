@@ -1,14 +1,15 @@
 ﻿using Domain.Repository;
+using Domain.Write.Entities;
 using Helper.ExceptionHandling.Types;
 
-namespace Domain.Write.Entities;
+namespace Domain.Write.DomainServices;
 
 public class CountryService(ICountryRepository countryRepository)
 {
     public async Task<Country> CreateAsync(string code, string name, decimal order)
     {
         var sameCodeExist = await countryRepository.SameCodeExistAsync(code);
-        var sameNameExist = await countryRepository.SameCodeExistAsync(name);
+        var sameNameExist = await countryRepository.SameNameExistAsync(name);
 
         if (sameCodeExist)
             throw new ResponsiveException(ExceptionMessage.NoParameter.SameCodeExist);
@@ -21,7 +22,7 @@ public class CountryService(ICountryRepository countryRepository)
     public async Task UpdateAsync(Country country, string code, string name, decimal order)
     {
         var sameCodeExist = await countryRepository.SameCodeExistAsync(country.Id, code);
-        var sameNameExist = await countryRepository.SameCodeExistAsync(country.Id, name);
+        var sameNameExist = await countryRepository.SameNameExistAsync(country.Id, name);
 
         if (sameCodeExist)
             throw new ResponsiveException(ExceptionMessage.NoParameter.SameCodeExist);
@@ -31,12 +32,12 @@ public class CountryService(ICountryRepository countryRepository)
         country.Update(code, name, order);
     }
 
-    public async Task DeleteAsync(int id) 
+    public async Task DeleteAsync(int id)
     {
         var country = await countryRepository.GetByIdAsync(id);
 
         if (country is null)
-            throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Domain.Write.Entities.Country)), new ArgumentNullException(nameof(country)));
+            throw new ResponsiveException(ExceptionMessage.WithParameter.NotFound(nameof(Country)), new ArgumentNullException(nameof(country)));
 
         country.Delete();
     }

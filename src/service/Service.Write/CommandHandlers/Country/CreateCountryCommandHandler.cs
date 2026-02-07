@@ -4,7 +4,7 @@ using Service.Commands.Country;
 using Domain.Repository;
 using Helper.ExceptionHandling.Types;
 using Domain.Write.ExceptionHandling.Types;
-using Domain.Write.Entities;
+using Domain.Write.DomainServices;
 
 namespace Service.CommandHandlers.Country;
 

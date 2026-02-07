@@ -1,5 +1,5 @@
 ﻿using Domain.Repository;
-using Domain.Write.Entities;
+using Domain.Write.DomainServices;
 using Domain.Write.ExceptionHandling.Types;
 using FluentResults;
 using Helper.ExceptionHandling.Types;

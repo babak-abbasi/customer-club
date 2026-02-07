@@ -1,5 +1,5 @@
 using Domain.Repository;
-using Domain.Write.Entities;
+using Domain.Write.DomainServices;
 using Helper.ExceptionHandling.Handler;
 using Helper.ExceptionHandling.Types;
 using Host.Write.CustomMiddlewares;
